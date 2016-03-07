@@ -14,6 +14,7 @@ import UIKit
     
     override public var text: String? { didSet { self.updateWords() } }
     override public var font: UIFont! { didSet { self.updateWords() } }
+    override public var textColor: UIColor! { didSet { self.updateWords() } }
     
     @IBInspectable public var lineSpace: CGFloat = 0 { didSet { self.updateWordLayout() } }
     
@@ -100,7 +101,9 @@ import UIKit
                 return paragraph.characters.split(" ", allowEmptySlices: true)
                     .map(String.init)
                     .map { s -> NSAttributedString? in
-                        return s == "" ? nil : NSAttributedString(string: s, attributes: [NSFontAttributeName : font])
+                        return s == "" ? nil :
+                            NSAttributedString(string: s,
+                                attributes: [NSFontAttributeName : font, NSForegroundColorAttributeName: self.textColor])
                     }
                     .flatMap { t -> Word? in
                         if let text = t {
@@ -132,7 +135,8 @@ import UIKit
         
         
         do {
-            let text = NSAttributedString(string: self.ellipsis, attributes: [NSFontAttributeName : font])
+            let text = NSAttributedString(string: self.ellipsis,
+                attributes: [NSFontAttributeName : font, NSForegroundColorAttributeName: self.textColor])
             let size = text.size()
             
             self.ellipsisWord = Word(
@@ -150,6 +154,7 @@ import UIKit
         self.doWordWrap = true
         
         let width = self.bounds.width
+        print("width \(width)")
         
         var totalSize:CGSize = CGSizeZero
         var rowSize: CGSize = CGSizeZero
