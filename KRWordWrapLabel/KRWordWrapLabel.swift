@@ -154,7 +154,6 @@ import UIKit
         self.doWordWrap = true
         
         let width = self.bounds.width
-        print("width \(width)")
         
         var totalSize:CGSize = CGSizeZero
         var rowSize: CGSize = CGSizeZero
@@ -195,7 +194,7 @@ import UIKit
             words[0].visible = false
         }
         
-        loop: for words in paragraphs {
+        loop: for (index, words) in paragraphs.enumerate() {
             for word in words {
                 var x = rowSize.width
                 if word.size.width > width {
@@ -221,7 +220,7 @@ import UIKit
                 rowSize.height = max(rowSize.height, word.size.height)
                 colCount++
             }
-            if rowCount == maxLines {
+            if rowCount == maxLines && index < paragraphs.count - 1 {
                 truncate = true
                 break loop
             }
