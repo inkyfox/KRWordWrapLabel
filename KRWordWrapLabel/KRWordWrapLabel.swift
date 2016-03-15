@@ -95,7 +95,8 @@ import UIKit
         
         let font = self.font.fontWithSize(fontSize)
         var w = 0
-        self.paragraphs = text.characters.split("\n", allowEmptySlices: true)
+        self.paragraphs = text.characters
+            .split(allowEmptySlices: true) { (c: Character) -> Bool in return c == "\n" || c == "\r\n" }
             .map(String.init)
             .map { (paragraph: String) -> [KRWordWrapLabel.Word] in
                 return paragraph.characters.split(" ", allowEmptySlices: true)
