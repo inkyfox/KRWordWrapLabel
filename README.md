@@ -25,8 +25,6 @@ UILabel은 Word Wrap 모드를 지원하지만 한글의 경우 글자 단위로
 ## Requirements
 
 - Swift 2.3
-- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.0.0-beta.2
-- [RxCocoa](https://github.com/ReactiveX/RxSwift) 3.0.0-beta.2
 
 ## Author
 
