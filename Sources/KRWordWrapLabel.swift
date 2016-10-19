@@ -16,11 +16,11 @@ import UIKit
     override open var font: UIFont! { didSet { self.updateWords() } }
     override open var textColor: UIColor! { didSet { self.updateWords() } }
     
-    @IBInspectable open var lineSpace: CGFloat = 0 { didSet { self.updateWordLayout() } }
+    @IBInspectable open var lineSpace: CGFloat = 0 { didSet { _ = self.updateWordLayout() } }
     
-    override open var bounds: CGRect { didSet { self.updateWordLayout() } }
-    override open var numberOfLines: Int { didSet { self.updateWordLayout() } }
-    override open var textAlignment: NSTextAlignment { didSet { self.updateWordLayout() } }
+    override open var bounds: CGRect { didSet { _ = self.updateWordLayout() } }
+    override open var numberOfLines: Int { didSet { _ = self.updateWordLayout() } }
+    override open var textAlignment: NSTextAlignment { didSet { _ = self.updateWordLayout() } }
     
     fileprivate var intrinsicSize: CGSize = CGSize.zero
     
