@@ -1,4 +1,5 @@
 # KRWordWrapLabel
+![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
 ![Swift](https://img.shields.io/badge/Swift-2.3-orange.svg)
 [![Version](https://img.shields.io/cocoapods/v/KRWordWrapLabel.svg?style=flat)](http://cocoapods.org/pods/KRWordWrapLabel)
 [![License](https://img.shields.io/cocoapods/l/KRWordWrapLabel.svg?style=flat)](http://cocoapods.org/pods/KRWordWrapLabel)
@@ -28,17 +29,19 @@ UILabel은 Word Wrap 모드를 지원하지만 한글의 경우 글자 단위로
 
 ### CocoaPods
 
+#### Swift 3
 ```Ruby
 pod 'KRWordWrapLabel'
 ```
 
-## Requirements
-
-- Swift 2.3
+#### Swift 2.3
+```Ruby
+pod 'KRWordWrapLabel' => '~>1'
+```
 
 ## Author
 
-Yongha Yoo, inkyfox@oo-v.com
+Yongha Yoo, http://inkyfox.oo-v.com
 
 ## License
 
