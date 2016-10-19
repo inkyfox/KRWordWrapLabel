@@ -32,17 +32,17 @@ class ViewController: UIViewController {
         updateLabel()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         labelWidthConstraint.constant = min(CGFloat(widthStepper.maximumValue), (self.view.window?.frame.width ?? 320) - 48)
         widthStepper.value = Double(labelWidthConstraint.constant)
         widthLabel.text = "\(widthStepper.value)"
     }
     
-    private func updateLabel() {
+    fileprivate func updateLabel() {
         let index = alignmentSegment.selectedSegmentIndex
-        label.textAlignment = index == 1 ? .Center : index == 2 ? .Right: .Left
+        label.textAlignment = index == 1 ? .center : index == 2 ? .right: .left
         label.numberOfLines = Int(maxLinesStepper.value)
-        label.font = label.font.fontWithSize(CGFloat(fontSizeStepper.value))
+        label.font = label.font.withSize(CGFloat(fontSizeStepper.value))
         label.minimumScaleFactor = CGFloat(minFontScaleStepper.value)
         
         maxLinesLabel.text = "\(label.numberOfLines)"
@@ -51,12 +51,12 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func updateLabel(sender: AnyObject) {
+    @IBAction func updateLabel(_ sender: AnyObject) {
         updateLabel()
     }
     
     
-    @IBAction func updateWidth(sender: AnyObject) {
+    @IBAction func updateWidth(_ sender: AnyObject) {
         labelWidthConstraint.constant = CGFloat(widthStepper.value)
         widthLabel.text = "\(widthStepper.value)"
     }

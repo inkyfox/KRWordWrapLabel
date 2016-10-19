@@ -1,10 +1,9 @@
 Pod::Spec.new do |s|
   s.name             = "KRWordWrapLabel"
-  s.version          = "1.0.0"
+  s.version          = "2.0.0"
   s.summary          = "UILabel subclass which provides **Word Wrap** based on white spaces not depending on languages"
   s.description      = <<-DESC
 # KRWordWrapLabel
-![Swift](https://img.shields.io/badge/Swift-2.3-orange.svg)
 
 ``UILabel`` subclass which provides **Word Wrap** based on white spaces not depending on languages
 
@@ -30,17 +29,19 @@ UILabel은 Word Wrap 모드를 지원하지만 한글의 경우 글자 단위로
 
 ### CocoaPods
 
+#### Swift 3
 ```Ruby
 pod 'KRWordWrapLabel'
 ```
 
-## Requirements
-
-- Swift 2.3
+#### Swift 2.3
+```Ruby
+pod 'KRWordWrapLabel' => '~>1'
+```
 
 ## Author
 
-Yongha Yoo, inkyfox@oo-v.com
+Yongha Yoo, http://inkyfox.oo-v.com
 
 ## License
 
@@ -56,5 +57,9 @@ MIT
   s.ios.deployment_target = '8.0'
 
   s.source_files          = 'Sources/KRWordWrapLabel.swift'
+
+  s.pod_target_xcconfig = {
+    'SWIFT_VERSION' => '3.0'
+  }
 
 end

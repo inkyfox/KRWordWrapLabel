@@ -8,42 +8,42 @@
 
 import UIKit
 
-@IBDesignable public class KRWordWrapLabel: UILabel {
+@IBDesignable open class KRWordWrapLabel: UILabel {
     
-    @IBInspectable public var ellipsis: String = "..." { didSet { self.updateWords() } }
+    @IBInspectable open var ellipsis: String = "..." { didSet { self.updateWords() } }
     
-    override public var text: String? { didSet { self.updateWords() } }
-    override public var font: UIFont! { didSet { self.updateWords() } }
-    override public var textColor: UIColor! { didSet { self.updateWords() } }
+    override open var text: String? { didSet { self.updateWords() } }
+    override open var font: UIFont! { didSet { self.updateWords() } }
+    override open var textColor: UIColor! { didSet { self.updateWords() } }
     
-    @IBInspectable public var lineSpace: CGFloat = 0 { didSet { self.updateWordLayout() } }
+    @IBInspectable open var lineSpace: CGFloat = 0 { didSet { self.updateWordLayout() } }
     
-    override public var bounds: CGRect { didSet { self.updateWordLayout() } }
-    override public var numberOfLines: Int { didSet { self.updateWordLayout() } }
-    override public var textAlignment: NSTextAlignment { didSet { self.updateWordLayout() } }
+    override open var bounds: CGRect { didSet { self.updateWordLayout() } }
+    override open var numberOfLines: Int { didSet { self.updateWordLayout() } }
+    override open var textAlignment: NSTextAlignment { didSet { self.updateWordLayout() } }
     
-    private var intrinsicSize: CGSize = CGSizeZero
+    fileprivate var intrinsicSize: CGSize = CGSize.zero
     
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         self.updateWords()
     }
     
-    override public func intrinsicContentSize() -> CGSize {
-        if self.lineBreakMode == .ByWordWrapping && self.doWordWrap {
+    override open var intrinsicContentSize : CGSize {
+        if self.lineBreakMode == .byWordWrapping && self.doWordWrap {
             return intrinsicSize
         } else {
-            return super.intrinsicContentSize()
+            return super.intrinsicContentSize
         }
     }
     
     // MARK: - Codes for Word Wrap
     
-    private class Word {
+    fileprivate class Word {
         let text: NSAttributedString
         let size: CGSize
         let precedingSpace: CGFloat
-        var origin: CGPoint = CGPointZero
+        var origin: CGPoint = CGPoint.zero
         var visible: Bool = true
         
         init(text: NSAttributedString, size: CGSize, precedingSpaceWidth: CGFloat) {
@@ -53,16 +53,16 @@ import UIKit
         }
     }
     
-    private var ellipsisWord: Word!
-    private var paragraphs: [[Word]]?
-    private var doWordWrap = true
+    fileprivate var ellipsisWord: Word!
+    fileprivate var paragraphs: [[Word]]?
+    fileprivate var doWordWrap = true
     
-    override public func drawRect(rect: CGRect) {
-        if self.lineBreakMode == .ByWordWrapping && self.doWordWrap {
+    override open func draw(_ rect: CGRect) {
+        if self.lineBreakMode == .byWordWrapping && self.doWordWrap {
             guard let paragraphs = self.paragraphs else { return }
             
             if self.ellipsisWord.visible {
-                self.ellipsisWord.text.drawAtPoint(self.ellipsisWord.origin)
+                self.ellipsisWord.text.draw(at: self.ellipsisWord.origin)
             }
             
             for words in paragraphs {
@@ -70,36 +70,36 @@ import UIKit
                     if !word.visible {
                         return
                     }
-                    word.text.drawAtPoint(word.origin)
+                    word.text.draw(at: word.origin)
                 }
             }
             
             
         } else {
-            super.drawRect(rect)
+            super.draw(rect)
         }
     }
     
-    private func updateWords() {
+    fileprivate func updateWords() {
         let maxFontSize = self.font.pointSize
         let minFontSize = self.adjustsFontSizeToFitWidth || self.minimumScaleFactor > 0 ? maxFontSize * self.minimumScaleFactor : maxFontSize
-        for size in maxFontSize.stride(through: minFontSize, by: -0.5) {
+        for size in stride(from: maxFontSize, through: minFontSize, by: -0.5) {
             if updateWords(size) {
                 return
             }
         }
     }
     
-    private func updateWords(fontSize: CGFloat) -> Bool {
+    fileprivate func updateWords(_ fontSize: CGFloat) -> Bool {
         guard let text = self.text else { return true }
         
-        let font = self.font.fontWithSize(fontSize)
+        let font = self.font.withSize(fontSize)
         var w = 0
         self.paragraphs = text.characters
-            .split(allowEmptySlices: true) { (c: Character) -> Bool in return c == "\n" || c == "\r\n" }
+            .split(omittingEmptySubsequences: false) { (c: Character) -> Bool in return c == "\n" || c == "\r\n" }
             .map(String.init)
             .map { (paragraph: String) -> [KRWordWrapLabel.Word] in
-                return paragraph.characters.split(" ", allowEmptySlices: true)
+                return paragraph.characters.split(separator: " ", omittingEmptySubsequences: false)
                     .map(String.init)
                     .map { s -> NSAttributedString? in
                         return s == "" ? nil :
@@ -109,11 +109,11 @@ import UIKit
                     .flatMap { t -> Word? in
                         if let text = t {
                             let size = text.size()
-                            let spaceWidth = NSAttributedString(string: String(count: w, repeatedValue: Character(" ")), attributes: [NSFontAttributeName : font]).size().width
+                            let spaceWidth = NSAttributedString(string: String(repeating: " ", count: w), attributes: [NSFontAttributeName : font]).size().width
                             w = 1
                             return Word(
                                 text: text,
-                                size: CGSizeMake(ceil(size.width), ceil(size.height)),
+                                size: CGSize(width: ceil(size.width), height: ceil(size.height)),
                                 precedingSpaceWidth: ceil(spaceWidth))
                         } else {
                             w += 1
@@ -129,7 +129,7 @@ import UIKit
                     let size = text.size()
                     return [Word(
                         text: text,
-                        size: CGSizeMake(ceil(size.width), ceil(size.height)),
+                        size: CGSize(width: ceil(size.width), height: ceil(size.height)),
                         precedingSpaceWidth: 0)]
                 }
         }
@@ -142,22 +142,22 @@ import UIKit
             
             self.ellipsisWord = Word(
                 text: text,
-                size: CGSizeMake(ceil(size.width), ceil(size.height)),
+                size: CGSize(width: ceil(size.width), height: ceil(size.height)),
                 precedingSpaceWidth: 0)
         }
         
         return self.updateWordLayout()
     }
     
-    private func updateWordLayout() -> Bool {
+    fileprivate func updateWordLayout() -> Bool {
         guard let paragraphs = self.paragraphs else { return true }
         
         self.doWordWrap = true
         
         let width = self.bounds.width
         
-        var totalSize:CGSize = CGSizeZero
-        var rowSize: CGSize = CGSizeZero
+        var totalSize:CGSize = CGSize.zero
+        var rowSize: CGSize = CGSize.zero
         
         var rowCount = 1
         var colCount = 0
@@ -165,11 +165,11 @@ import UIKit
         var colWords: [Word] = []
         
         func newRow() {
-            var x = self.textAlignment == .Center ? (width - rowSize.width) / 2 : self.textAlignment == .Right ? width - rowSize.width : 0
+            var x = self.textAlignment == .center ? (width - rowSize.width) / 2 : self.textAlignment == .right ? width - rowSize.width : 0
             
             let y = totalSize.height + rowSize.height
             
-            for (index, word) in colWords.enumerate() {
+            for (index, word) in colWords.enumerated() {
                 if index > 0 {
                     x += word.precedingSpace
                 }
@@ -183,7 +183,7 @@ import UIKit
             totalSize.height += rowSize.height
             
             colWords.removeAll()
-            rowSize = CGSizeZero
+            rowSize = CGSize.zero
             colCount = 0
             rowCount += 1
         }
@@ -195,7 +195,7 @@ import UIKit
             words[0].visible = false
         }
         
-        loop: for (index, words) in paragraphs.enumerate() {
+        loop: for (index, words) in paragraphs.enumerated() {
             for word in words {
                 var x = rowSize.width
                 if word.size.width > width {
