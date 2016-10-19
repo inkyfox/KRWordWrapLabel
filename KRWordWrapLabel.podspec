@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = "2.0.1"
   s.summary          = "UILabel subclass which provides **Word Wrap** based on white spaces not depending on languages"
   s.homepage         = "https://github.com/inkyfox/KRWordWrapLabel"
-  s.screenshot       = "https://github.com/inkyfox/KRWordWrapLabel/blob/master/screenshot/KRWordWrapLabel.gif"
+  s.screenshot       = "https://raw.githubusercontent.com/inkyfox/KRWordWrapLabel/master/screenshot/KRWordWrapLabel.gif"
   s.license          = 'MIT'
   s.author           = { "Yongha Yoo" => "inkyfox@oo-v.com" }
   s.platform         = :ios, "8.0"
