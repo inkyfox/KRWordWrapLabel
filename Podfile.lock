@@ -1,5 +1,5 @@
 PODS:
-  - KRWordWrapLabel (1.0.0)
+  - KRWordWrapLabel (2.0.0)
 
 DEPENDENCIES:
   - KRWordWrapLabel (from `./`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  KRWordWrapLabel: 3513e4addf933f2ceade364bb146c1cb9b71c0ea
+  KRWordWrapLabel: cbb74d4709b25b1aed7db908acf04541f893c18e
 
-PODFILE CHECKSUM: 2a7501af955d92afff5565197d006fb7a1f9316f
+PODFILE CHECKSUM: fc94731e0d078b2539d665073f1871400c23dda1
 
 COCOAPODS: 1.1.0.rc.3
