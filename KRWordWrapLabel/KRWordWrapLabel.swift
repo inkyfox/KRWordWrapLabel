@@ -83,7 +83,7 @@ import UIKit
     private func updateWords() {
         let maxFontSize = self.font.pointSize
         let minFontSize = self.adjustsFontSizeToFitWidth || self.minimumScaleFactor > 0 ? maxFontSize * self.minimumScaleFactor : maxFontSize
-        for var size = maxFontSize; size >= minFontSize; size -= 0.5 {
+        for size in maxFontSize.stride(through: minFontSize, by: -0.5) {
             if updateWords(size) {
                 return
             }
@@ -185,7 +185,7 @@ import UIKit
             colWords.removeAll()
             rowSize = CGSizeZero
             colCount = 0
-            rowCount++
+            rowCount += 1
         }
         
         let maxLines = self.numberOfLines > 0 ? self.numberOfLines : Int.max
@@ -219,7 +219,7 @@ import UIKit
                 colWords.append(word)
                 rowSize.width += (colCount == 0 ? 0 : word.precedingSpace) + word.size.width
                 rowSize.height = max(rowSize.height, word.size.height)
-                colCount++
+                colCount += 1
             }
             if rowCount == maxLines && index < paragraphs.count - 1 {
                 truncate = true
