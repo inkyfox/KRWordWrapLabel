@@ -1,5 +1,8 @@
 # KRWordWrapLabel
 ![Swift](https://img.shields.io/badge/Swift-2.3-orange.svg)
+[![Version](https://img.shields.io/cocoapods/v/KRWordWrapLabel.svg?style=flat)](http://cocoapods.org/pods/KRWordWrapLabel)
+[![License](https://img.shields.io/cocoapods/l/KRWordWrapLabel.svg?style=flat)](http://cocoapods.org/pods/KRWordWrapLabel)
+[![Platform](https://img.shields.io/cocoapods/p/KRWordWrapLabel.svg?style=flat)](http://cocoapods.org/pods/KRWordWrapLabel)
 
 ``UILabel`` subclass which provides **Word Wrap** based on white spaces not depending on languages
 
@@ -21,6 +24,13 @@ UILabel은 Word Wrap 모드를 지원하지만 한글의 경우 글자 단위로
 ### ScreenShot
 ![sreenshot](https://github.com/inkyfox/KRWordWrapLabel/blob/master/screenshot/KRWordWrapLabel.gif)
 
+## Installation
+
+### CocoaPods
+
+```Ruby
+pod 'KRWordWrapLabel'
+```
 
 ## Requirements
 
