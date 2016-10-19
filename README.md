@@ -1,4 +1,7 @@
 # KRWordWrapLabel
+![Swift](https://img.shields.io/badge/Swift-2.3-orange.svg)
+
+
 Although UILabel supports "Word Wrap" for the line breaking mode, it doesn't work on Korean letters. It works just like "Charactor Wrap". This KRWordWrapLabel provides "Word Wrap" based on white spaces not depending on languages. Almost all the requirements for this library is from Korean, so I'll describe the details in Korean below.
 
 UILabel은 Word Wrap 모드를 지원하지만 한글의 경우 글자 단위로 줄바꿈이 됩니다. 이 KRWordWrapLabel은 UILabel의 Subclass로서 한글의 단어 단위의 줄바꿈이 가능합니다.
@@ -13,5 +16,16 @@ UILabel은 Word Wrap 모드를 지원하지만 한글의 경우 글자 단위로
 ![sreenshot](https://github.com/inkyfox/KRWordWrapLabel/blob/master/screenshot/KRWordWrapLabel.gif)
 
 
-### LICENSE
-[LICENSE UNDER MIT](https://github.com/fenjuly/ArrowDownloadButton/raw/master/LICENSE)
+## Requirements
+
+- Swift 2.3
+- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.0.0-beta.2
+- [RxCocoa](https://github.com/ReactiveX/RxSwift) 3.0.0-beta.2
+
+## Author
+
+Yongha Yoo, inkyfox@oo-v.com
+
+## License
+
+MIT
