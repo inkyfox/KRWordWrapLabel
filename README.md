@@ -41,7 +41,7 @@ pod 'KRWordWrapLabel' => '~>1'
 
 ## Author
 
-Yongha Yoo, http://inkyfox.oo-v.com
+[Yongha Yoo](http://inkyfox.oo-v.com)
 
 ## License
 
