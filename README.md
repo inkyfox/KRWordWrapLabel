@@ -1,6 +1,5 @@
 # KRWordWrapLabel
-![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
-![Swift](https://img.shields.io/badge/Swift-2.3-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/KRWordWrapLabel.svg?style=flat)](http://cocoapods.org/pods/KRWordWrapLabel)
 [![License](https://img.shields.io/cocoapods/l/KRWordWrapLabel.svg?style=flat)](http://cocoapods.org/pods/KRWordWrapLabel)
