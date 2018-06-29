@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KRWordWrapLabel"
-  s.version          = "2.1.0"
+  s.version          = "2.1.1"
   s.summary          = "UILabel subclass which provides **Word Wrap** based on white spaces not depending on languages"
   s.homepage         = "https://github.com/inkyfox/KRWordWrapLabel"
   s.screenshot       = "https://raw.githubusercontent.com/inkyfox/KRWordWrapLabel/master/screenshot/KRWordWrapLabel.gif"
@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.requires_arc          = true
   s.ios.deployment_target = '8.0'
   s.source_files          = 'Sources/KRWordWrapLabel.swift'
-  s.swift_version = '4.0'
+  s.swift_version = '4.1'
 end
