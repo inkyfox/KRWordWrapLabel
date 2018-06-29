@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.requires_arc          = true
   s.ios.deployment_target = '8.0'
   s.source_files          = 'Sources/KRWordWrapLabel.swift'
-  s.spec.swift_version = '4.0'
+  s.swift_version = '4.0'
 end
