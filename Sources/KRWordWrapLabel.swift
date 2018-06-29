@@ -95,18 +95,18 @@ import UIKit
         
         let font = self.font.withSize(fontSize)
         var w = 0
-        self.paragraphs = text.characters
+        self.paragraphs = text
             .split(omittingEmptySubsequences: false) { (c: Character) -> Bool in return c == "\n" || c == "\r\n" }
             .map(String.init)
             .map { (paragraph: String) -> [KRWordWrapLabel.Word] in
-                return paragraph.characters.split(separator: " ", omittingEmptySubsequences: false)
+                return paragraph.split(separator: " ", omittingEmptySubsequences: false)
                     .map(String.init)
                     .map { s -> NSAttributedString? in
                         return s == "" ? nil :
                             NSAttributedString(string: s,
                                                attributes: [NSAttributedStringKey.font : font, NSAttributedStringKey.foregroundColor: self.textColor])
                     }
-                    .flatMap { t -> Word? in
+                    .compactMap { t -> Word? in
                         if let text = t {
                             let size = text.size()
                             let spaceWidth = NSAttributedString(string: String(repeating: " ", count: w), attributes: [NSAttributedStringKey.font : font]).size().width
@@ -121,7 +121,7 @@ import UIKit
                         }
                 }
             }
-            .flatMap { words -> [KRWordWrapLabel.Word] in
+            .compactMap { words -> [KRWordWrapLabel.Word] in
                 if words.count > 0 {
                     return words
                 } else {
