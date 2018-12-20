@@ -104,12 +104,12 @@ import UIKit
                     .map { s -> NSAttributedString? in
                         return s == "" ? nil :
                             NSAttributedString(string: s,
-                                               attributes: [NSAttributedStringKey.font : font, NSAttributedStringKey.foregroundColor: self.textColor])
+                                               attributes: [.font : font, .foregroundColor: self.textColor])
                     }
                     .compactMap { t -> Word? in
                         if let text = t {
                             let size = text.size()
-                            let spaceWidth = NSAttributedString(string: String(repeating: " ", count: w), attributes: [NSAttributedStringKey.font : font]).size().width
+                            let spaceWidth = NSAttributedString(string: String(repeating: " ", count: w), attributes: [.font : font]).size().width
                             w = 1
                             return Word(
                                 text: text,
@@ -125,7 +125,7 @@ import UIKit
                 if words.count > 0 {
                     return words
                 } else {
-                    let text = NSAttributedString(string: " ", attributes: [NSAttributedStringKey.font : font])
+                    let text = NSAttributedString(string: " ", attributes: [.font : font])
                     let size = text.size()
                     return [Word(
                         text: text,
@@ -137,7 +137,7 @@ import UIKit
         
         do {
             let text = NSAttributedString(string: self.ellipsis,
-                                          attributes: [NSAttributedStringKey.font : font, NSAttributedStringKey.foregroundColor: self.textColor])
+                                          attributes: [.font : font, .foregroundColor: self.textColor])
             let size = text.size()
             
             self.ellipsisWord = Word(
